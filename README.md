@@ -14,7 +14,7 @@ A modern, framework-agnostic typing animation library with customizable speed cu
 ## Installation
 
 ```bash
-npm install typist-js
+npm install @isbosykh/typist-js
 ```
 
 ## Quick Start
