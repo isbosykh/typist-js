@@ -1,0 +1,69 @@
+{
+  "name": "typist-js",
+  "version": "1.0.0",
+  "description": "A modern, framework-agnostic typing animation library with customizable speed curves",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "npm run build",
+    "example:vanilla": "open examples/vanilla.html",
+    "example:serve": "npx http-server examples -p 8080"
+  },
+  "keywords": [
+    "typing",
+    "typewriter",
+    "text-animation",
+    "typing-effect",
+    "animated-text",
+    "text-typing",
+    "typewriter-effect",
+    "typing-animation",
+    "framework-agnostic",
+    "vanilla-js",
+    "typescript",
+    "svelte",
+    "react",
+    "vue",
+    "angular",
+    "web-components",
+    "ui-library",
+    "frontend",
+    "javascript-library",
+    "npm-package",
+    "speed-curves",
+    "bezier",
+    "sine-wave",
+    "exponential",
+    "smooth-animation",
+    "cursor-animation",
+    "text-effects"
+  ],
+  "author": "Ilya Bosykh",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isbosykh/typist-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/isbosykh/typist-js/issues"
+  },
+  "homepage": "https://github.com/isbosykh/typist-js#readme",
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.5",
+    "rollup": "^4.6.1",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}

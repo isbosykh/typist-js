@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypistJS - Vanilla JS Example</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: white;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .demo-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .typed-demo {
+            font-size: 24px;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        select, input[type="range"] {
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #3b82f6;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        
+        button:hover {
+            background: #2563eb;
+        }
+        
+        .code-example {
+            background: #1e293b;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        
+        code {
+            color: #10b981;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TypistJS - Vanilla JavaScript Example</h1>
+        
+        <div class="demo-section">
+            <h2>Основная демонстрация</h2>
+            <div id="main-demo" class="typed-demo"></div>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="curve-select">Кривая скорости:</label>
+                    <select id="curve-select">
+                        <option value="linear">Linear</option>
+                        <option value="bezier" selected>Bezier</option>
+                        <option value="exponential">Exponential</option>
+                        <option value="sine">Sine</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="speed-range">Скорость: <span id="speed-value">100</span>ms</label>
+                    <input type="range" id="speed-range" min="50" max="300" value="100">
+                </div>
+                
+                <div class="control-group">
+                    <button onclick="restartDemo()">Перезапустить</button>
+                    <button onclick="stopDemo()">Остановить</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Сравнение кривых скорости</h2>
+            
+            <div class="demo-section">
+                <h3>Linear</h3>
+                <div id="linear-demo" class="typed-demo"></div>
+            </div>
+            
+            <div class="demo-section">
+                <h3>Bezier</h3>
+                <div id="bezier-demo" class="typed-demo"></div>
+            </div>
+            
+            <div class="demo-section">
+                <h3>Exponential</h3>
+                <div id="exponential-demo" class="typed-demo"></div>
+            </div>
+            
+            <div class="demo-section">
+                <h3>Sine</h3>
+                <div id="sine-demo" class="typed-demo"></div>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Пример кода</h2>
+            <div class="code-example">
+                <code>
+// Подключение библиотеки<br>
+import { TypedText } from 'typist-js';<br><br>
+
+// Создание экземпляра<br>
+const typed = new TypedText('#my-element', {<br>
+&nbsp;&nbsp;strings: ['Привет мир!', 'TypistJS работает!'],<br>
+&nbsp;&nbsp;typeSpeed: 100,<br>
+&nbsp;&nbsp;typeSpeedCurvature: 'bezier',<br>
+&nbsp;&nbsp;loop: true,<br>
+&nbsp;&nbsp;onStringComplete: (index) => {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;console.log(`Завершена строка ${index}`);<br>
+&nbsp;&nbsp;}<br>
+});
+                </code>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подключаем библиотеку -->
+    <script src="../dist/index.umd.js"></script>
+    <script>
+        const { TypedText } = TypistJS;
+        
+        let mainTyped = null;
+        
+        const demoStrings = [
+            'Добро пожаловать в TypistJS!',
+            'Framework-agnostic библиотека',
+            'С поддержкой кривых скорости',
+            'TypeScript из коробки'
+        ];
+        
+        // Инициализация основной демонстрации
+        function initMainDemo() {
+            const curve = document.getElementById('curve-select').value;
+            const speed = parseInt(document.getElementById('speed-range').value);
+            
+            if (mainTyped) {
+                mainTyped.destroy();
+            }
+            
+            mainTyped = new TypedText('#main-demo', {
+                strings: demoStrings,
+                typeSpeed: speed,
+                typeSpeedCurvature: curve,
+                loop: true,
+                onStringComplete: (index) => {
+                    console.log(`Завершена строка ${index}: "${demoStrings[index]}"`);
+                }
+            });
+        }
+        
+        // Инициализация демонстраций кривых
+        function initCurveDemo(elementId, curve, text) {
+            new TypedText(elementId, {
+                strings: [text],
+                typeSpeed: 80,
+                typeSpeedCurvature: curve,
+                loop: true
+            });
+        }
+        
+        // Обработчики событий
+        function restartDemo() {
+            initMainDemo();
+        }
+        
+        function stopDemo() {
+            if (mainTyped) {
+                mainTyped.stop();
+            }
+        }
+        
+        // Обновление значения скорости
+        document.getElementById('speed-range').addEventListener('input', function() {
+            document.getElementById('speed-value').textContent = this.value;
+        });
+        
+        // Обновление демонстрации при изменении настроек
+        document.getElementById('curve-select').addEventListener('change', initMainDemo);
+        document.getElementById('speed-range').addEventListener('change', initMainDemo);
+        
+        // Инициализация при загрузке страницы
+        window.addEventListener('load', function() {
+            initMainDemo();
+            
+            // Инициализация демонстраций кривых
+            initCurveDemo('#linear-demo', 'linear', 'Постоянная скорость');
+            initCurveDemo('#bezier-demo', 'bezier', 'Плавное ускорение');
+            initCurveDemo('#exponential-demo', 'exponential', 'Драматическое ускорение');
+            initCurveDemo('#sine-demo', 'sine', 'Волнообразный ритм');
+        });
+    </script>
+</body>
+</html>
