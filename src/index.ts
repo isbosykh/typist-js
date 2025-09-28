@@ -264,5 +264,3 @@ export class TypedText {
     return this.timeoutId !== null;
   }
 }
-
-export default TypedText;
