@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,15 +91,15 @@
 </head>
 <body>
     <div class="container">
-        <h1>TypistJS - Vanilla JavaScript Example</h1>
+        <h1>TypistJS - Vanilla JavaScript Demo</h1>
         
         <div class="demo-section">
-            <h2>Основная демонстрация</h2>
+            <h2>Main Demo</h2>
             <div id="main-demo" class="typed-demo"></div>
             
             <div class="controls">
                 <div class="control-group">
-                    <label for="curve-select">Кривая скорости:</label>
+                    <label for="curve-select">Speed curve:</label>
                     <select id="curve-select">
                         <option value="linear">Linear</option>
                         <option value="bezier" selected>Bezier</option>
@@ -109,19 +109,19 @@
                 </div>
                 
                 <div class="control-group">
-                    <label for="speed-range">Скорость: <span id="speed-value">100</span>ms</label>
+                    <label for="speed-range">Speed: <span id="speed-value">100</span>ms</label>
                     <input type="range" id="speed-range" min="50" max="300" value="100">
                 </div>
                 
                 <div class="control-group">
-                    <button onclick="restartDemo()">Перезапустить</button>
-                    <button onclick="stopDemo()">Остановить</button>
+                    <button onclick="restartDemo()">Restart</button>
+                    <button onclick="stopDemo()">Stop</button>
                 </div>
             </div>
         </div>
         
         <div class="demo-section">
-            <h2>Сравнение кривых скорости</h2>
+            <h2>Speed Curve Comparison</h2>
             
             <div class="demo-section">
                 <h3>Linear</h3>
@@ -145,20 +145,20 @@
         </div>
         
         <div class="demo-section">
-            <h2>Пример кода</h2>
+            <h2>Code Example</h2>
             <div class="code-example">
                 <code>
-// Подключение библиотеки<br>
+// Import the library<br>
 import { TypedText } from 'typist-js';<br><br>
 
-// Создание экземпляра<br>
+// Create an instance<br>
 const typed = new TypedText('#my-element', {<br>
-&nbsp;&nbsp;strings: ['Привет мир!', 'TypistJS работает!'],<br>
+&nbsp;&nbsp;strings: ['Hello world!', 'TypistJS is running!'],<br>
 &nbsp;&nbsp;typeSpeed: 100,<br>
 &nbsp;&nbsp;typeSpeedCurvature: 'bezier',<br>
 &nbsp;&nbsp;loop: true,<br>
 &nbsp;&nbsp;onStringComplete: (index) => {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;console.log(`Завершена строка ${index}`);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;console.log(`Completed string ${index}`);<br>
 &nbsp;&nbsp;}<br>
 });
                 </code>
@@ -166,7 +166,7 @@ const typed = new TypedText('#my-element', {<br>
         </div>
     </div>
 
-    <!-- Подключаем библиотеку -->
+    <!-- Load the library -->
     <script src="../dist/index.umd.js"></script>
     <script>
         const { TypedText } = TypistJS;
@@ -174,13 +174,13 @@ const typed = new TypedText('#my-element', {<br>
         let mainTyped = null;
         
         const demoStrings = [
-            'Добро пожаловать в TypistJS!',
-            'Framework-agnostic библиотека',
-            'С поддержкой кривых скорости',
-            'TypeScript из коробки'
+            'Welcome to TypistJS!',
+            'Framework-agnostic typing library',
+            'Speed curves built in',
+            'TypeScript support out of the box'
         ];
         
-        // Инициализация основной демонстрации
+        // Initialize main demo
         function initMainDemo() {
             const curve = document.getElementById('curve-select').value;
             const speed = parseInt(document.getElementById('speed-range').value);
@@ -195,12 +195,12 @@ const typed = new TypedText('#my-element', {<br>
                 typeSpeedCurvature: curve,
                 loop: true,
                 onStringComplete: (index) => {
-                    console.log(`Завершена строка ${index}: "${demoStrings[index]}"`);
+                    console.log(`Completed string ${index}: "${demoStrings[index]}"`);
                 }
             });
         }
         
-        // Инициализация демонстраций кривых
+        // Initialize curve demos
         function initCurveDemo(elementId, curve, text) {
             new TypedText(elementId, {
                 strings: [text],
@@ -210,7 +210,7 @@ const typed = new TypedText('#my-element', {<br>
             });
         }
         
-        // Обработчики событий
+        // Event handlers
         function restartDemo() {
             initMainDemo();
         }
@@ -221,24 +221,24 @@ const typed = new TypedText('#my-element', {<br>
             }
         }
         
-        // Обновление значения скорости
+        // Update speed label
         document.getElementById('speed-range').addEventListener('input', function() {
             document.getElementById('speed-value').textContent = this.value;
         });
         
-        // Обновление демонстрации при изменении настроек
+        // Re-initialize demo when settings change
         document.getElementById('curve-select').addEventListener('change', initMainDemo);
         document.getElementById('speed-range').addEventListener('change', initMainDemo);
         
-        // Инициализация при загрузке страницы
+        // Initialize on page load
         window.addEventListener('load', function() {
             initMainDemo();
             
-            // Инициализация демонстраций кривых
-            initCurveDemo('#linear-demo', 'linear', 'Постоянная скорость');
-            initCurveDemo('#bezier-demo', 'bezier', 'Плавное ускорение');
-            initCurveDemo('#exponential-demo', 'exponential', 'Драматическое ускорение');
-            initCurveDemo('#sine-demo', 'sine', 'Волнообразный ритм');
+            // Initialize curve comparison demos
+            initCurveDemo('#linear-demo', 'linear', 'Constant speed');
+            initCurveDemo('#bezier-demo', 'bezier', 'Smooth acceleration');
+            initCurveDemo('#exponential-demo', 'exponential', 'Dramatic acceleration');
+            initCurveDemo('#sine-demo', 'sine', 'Wave-like rhythm');
         });
     </script>
 </body>

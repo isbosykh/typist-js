@@ -27,12 +27,12 @@ const TypedComponent: React.FC<TypedComponentProps> = ({
 
   useEffect(() => {
     if (elementRef.current && strings.length > 0) {
-      // Уничтожаем предыдущий экземпляр
+      // Destroy previous instance
       if (typedRef.current) {
         typedRef.current.destroy();
       }
 
-      // Создаем новый экземпляр
+      // Create a new instance
       typedRef.current = new TypedText(elementRef.current, {
         strings,
         typeSpeed,
@@ -44,7 +44,7 @@ const TypedComponent: React.FC<TypedComponentProps> = ({
       });
     }
 
-    // Cleanup функция
+    // Cleanup function
     return () => {
       if (typedRef.current) {
         typedRef.current.destroy();
@@ -56,23 +56,23 @@ const TypedComponent: React.FC<TypedComponentProps> = ({
   return <div ref={elementRef} className={className} />;
 };
 
-// Пример использования компонента
+// Example usage of the component
 const App: React.FC = () => {
   const [curve, setCurve] = useState<'linear' | 'bezier' | 'exponential' | 'sine'>('bezier');
   const [speed, setSpeed] = useState(100);
 
   const demoStrings = [
-    'Привет из React!',
-    'Better Type работает отлично!',
-    'Framework-agnostic решение'
+    'Hello from React!',
+    'Better Type works great!',
+    'Framework-agnostic solution'
   ];
 
   const handleStringComplete = (index: number) => {
-    console.log(`Завершена строка ${index}: "${demoStrings[index]}"`);
+    console.log(`Completed string ${index}: "${demoStrings[index]}"`);
   };
 
   const handleComplete = () => {
-    console.log('Анимация завершена!');
+    console.log('Animation finished!');
   };
 
   return (
@@ -112,7 +112,7 @@ const App: React.FC = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '15px' }}>
           <div>
             <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
-              Кривая скорости:
+              Speed curve:
             </label>
             <select 
               value={curve} 
@@ -135,7 +135,7 @@ const App: React.FC = () => {
 
           <div>
             <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
-              Скорость: {speed}ms
+              Speed: {speed}ms
             </label>
             <input
               type="range"
@@ -154,13 +154,13 @@ const App: React.FC = () => {
         padding: '20px', 
         borderRadius: '10px' 
       }}>
-        <h2>Сравнение кривых</h2>
+        <h2>Curve Comparison</h2>
         
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '15px' }}>
           <div style={{ background: 'rgba(255,255,255,0.1)', padding: '15px', borderRadius: '5px' }}>
             <h3>Linear</h3>
             <TypedComponent
-              strings={['Постоянная скорость']}
+              strings={['Constant speed']}
               typeSpeed={80}
               typeSpeedCurvature="linear"
               loop={true}
@@ -170,7 +170,7 @@ const App: React.FC = () => {
           <div style={{ background: 'rgba(255,255,255,0.1)', padding: '15px', borderRadius: '5px' }}>
             <h3>Bezier</h3>
             <TypedComponent
-              strings={['Плавное ускорение']}
+              strings={['Smooth acceleration']}
               typeSpeed={80}
               typeSpeedCurvature="bezier"
               loop={true}
@@ -180,7 +180,7 @@ const App: React.FC = () => {
           <div style={{ background: 'rgba(255,255,255,0.1)', padding: '15px', borderRadius: '5px' }}>
             <h3>Exponential</h3>
             <TypedComponent
-              strings={['Драматическое ускорение']}
+              strings={['Dramatic acceleration']}
               typeSpeed={80}
               typeSpeedCurvature="exponential"
               loop={true}
@@ -190,7 +190,7 @@ const App: React.FC = () => {
           <div style={{ background: 'rgba(255,255,255,0.1)', padding: '15px', borderRadius: '5px' }}>
             <h3>Sine</h3>
             <TypedComponent
-              strings={['Волнообразный ритм']}
+              strings={['Wave-like rhythm']}
               typeSpeed={80}
               typeSpeedCurvature="sine"
               loop={true}
