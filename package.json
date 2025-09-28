@@ -1,6 +1,6 @@
 {
-  "name": "@isbosykh/typist",
-  "version": "1.0.3",
+  "name": "@isbosykh/typist-js",
+  "version": "1.0.4",
   "description": "A modern, framework-agnostic typing animation library with customizable speed curves",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

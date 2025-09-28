@@ -14,7 +14,7 @@ A modern, framework-agnostic typing animation library with customizable speed cu
 ## Installation
 
 ```bash
-npm install typist-js
+npm install @isbosykh/typist-js
 ```
 
 ## Quick Start
@@ -22,7 +22,7 @@ npm install typist-js
 ### Vanilla JavaScript/TypeScript
 
 ```typescript
-import { TypedText } from 'typist-js';
+import { TypedText } from '@isbosykh/typist-js';
 
 const typed = new TypedText('#my-element', {
   strings: ['Hello World!', 'Welcome to TypistJS!', 'Enjoy typing animations!'],
@@ -140,7 +140,7 @@ Check if the animation is currently running.
 
 ```tsx
 import React, { useEffect, useRef } from 'react';
-import { TypedText } from 'typist-js';
+import { TypedText } from '@isbosykh/typist-js';
 
 const TypedComponent: React.FC = () => {
   const elementRef = useRef<HTMLDivElement>(null);
@@ -174,7 +174,7 @@ const TypedComponent: React.FC = () => {
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
-import { TypedText } from 'typist-js';
+import { TypedText } from '@isbosykh/typist-js';
 
 const typedElement = ref<HTMLElement>();
 let typed: TypedText | null = null;
@@ -201,7 +201,7 @@ onUnmounted(() => {
 ```svelte
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
-  import { TypedText } from 'typist-js';
+  import { TypedText } from '@isbosykh/typist-js';
 
   let element: HTMLElement;
   let typed: TypedText | null = null;
