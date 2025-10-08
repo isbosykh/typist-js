@@ -1,3 +1,6 @@
+[![npm version](https://img.shields.io/npm/v/@isbosykh/typist-js?style=flat-square&logo=npm)](https://www.npmjs.com/package/@isbosykh/typist-js)
+[![npm downloads](https://img.shields.io/npm/dm/@isbosykh/typist-js?style=flat-square)](https://www.npmjs.com/package/@isbosykh/typist-js)
+
 # TypistJS
 
 A modern, framework-agnostic typing animation library with customizable speed curves and advanced features.
